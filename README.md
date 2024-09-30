@@ -10,7 +10,7 @@
 - CSS (estilização);
 - Banco de Dados MySQL (armazenamento de dados).
 
-**Equipe de desenvolvimento:** Alice e Josué Vítor.
+**Equipe de desenvolvimento:** Alice, Josué Vítor e Vinicius.
 
 **Objetivos do software:** O sistema será utilizado pela secretária e pela diretora da escola, com o intuito de:
 - Armazenar e gerenciar informações dos usuários, permitindo a atualização de dados como cadastro de alunos e turmas;
