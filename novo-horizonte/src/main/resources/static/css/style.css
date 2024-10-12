@@ -26,4 +26,7 @@ body::before {
     z-index: -1; /* Certifica-se de que fique atrás do conteúdo */
 }
 
+.div-erro{
+
+}
 

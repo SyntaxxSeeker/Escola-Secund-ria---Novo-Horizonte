@@ -19,32 +19,71 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <main>
             <div class="container d-flex justify-content-center">
                 <div class="bg-white p-4 shadow-lg" style="width: 700px;">
-                    <form>
+                    <form id="formulario-turma">
                         <div class="form-row">
+                            <!-- Campo Número da Turma -->
                             <div class="form-group col-md-12">
-                                <label for="inputNumeroTurma">N° da Turma: </label>
-                                <input type="text" class="form-control" id="inputEmail4" placeholder="Número da Turma"/>
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <label for="inputNumeroTurma">N° da Turma: </label>
+                                    </div>
+                                    <div class="col-md-6 text-end">
+                                        <div class="text-danger" id="erro-numero-turma"></div> <!-- Erro Número da Turma -->
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control mt-2" id="inputNumeroTurma" placeholder="Número da Turma"/>
                             </div>
+
+                            <!-- Campo Professor -->
                             <div class="form-group col-md-12">
-                                <label for="inputCpf">Professor: </label>
-                                <input type="text" class="form-control" id="inputCpf" placeholder="Professor"/>
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <label for="inputProfessor">Professor: </label>
+                                    </div>
+                                    <div class="col-md-6 text-end">
+                                        <div class="text-danger" id="erro-professor"></div> <!-- Erro Professor -->
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control mt-2" id="inputProfessor" placeholder="Professor"/>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputAddress">Turno: </label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="turno"/>
-                        </div>
+
+                        <!-- Campo Turno -->
                         <div class="form-group col-md-12">
-                            <label for="inputCpf">N° de Alunos</label>
-                            <input type="number" class="form-control" id="inputMatricula" placeholder="N° de alunos"/>
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <label for="inputTurno">Turno: </label>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <div class="text-danger" id="erro-turno"></div> <!-- Erro Turno -->
+                                </div>
+                            </div>
+                            <input type="text" class="form-control mt-2" id="inputTurno" placeholder="Turno"/>
                         </div>
+
+                        <!-- Campo Número de Alunos -->
+                        <div class="form-group col-md-12">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <label for="inputNumeroAlunos">N° de Alunos: </label>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <div class="text-danger" id="erro-numero-alunos"></div> <!-- Erro Número de Alunos -->
+                                </div>
+                            </div>
+                            <input type="number" class="form-control mt-2" id="inputNumeroAlunos" placeholder="N° de alunos"/>
+                        </div>
+
+                        <!-- Botão de Adicionar -->
                         <button type="submit" class="btn btn-primary w-100 mt-3">Adicionar Aluno</button>
                     </form>
                 </div>
             </div>
         </main>
 
+
         <!-- CDN Bootstrap .js -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script th:src="@{/js/script.js}"></script>
     </body>
 </html>
