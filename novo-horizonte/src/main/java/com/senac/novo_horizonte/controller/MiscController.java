@@ -34,7 +34,7 @@ public class MiscController {
         }
 
         model.addAttribute("error", "Usuário ou Senha inválidos");
-        return "redirect:/login";
+        return "login";
     }
 
     @GetMapping("/principal")
