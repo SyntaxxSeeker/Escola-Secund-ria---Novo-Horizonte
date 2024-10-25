@@ -7,6 +7,7 @@ package com.senac.novo_horizonte.controller;
 import com.senac.novo_horizonte.entity.UsuarioDTO;
 import com.senac.novo_horizonte.entity.UsuarioEntity;
 import com.senac.novo_horizonte.service.Criptografia;
+import com.senac.novo_horizonte.service.UserLog;
 import com.senac.novo_horizonte.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,12 +34,16 @@ public class MiscController {
         }
 
         model.addAttribute("error", "Usuário ou Senha inválidos");
-        return "login";
+        return "redirect:/login";
     }
 
     @GetMapping("/principal")
     public String getPrincipal() {
-        return "principal";
+
+        if(UserLog.getAcesso()){
+            return "principal";
+        }
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
@@ -49,31 +54,49 @@ public class MiscController {
 
     @GetMapping("/alunos")
     public String getAlunos() {
-        return "alunos";
+        if (UserLog.getAcesso()){
+            return "alunos";
+        }
+        return "redirect:/login";
     }
 
     @GetMapping("/funcionarios")
     public String getFuncionarios() {
-        return "funcionarios";
+        if(UserLog.getAcesso()){
+            return "funcionarios";
+        }
+        return "redirect:/login";
     }
 
     @GetMapping("/turmas")
     public String getTurma() {
-        return "turmas";
+        if (UserLog.getAcesso()){
+            return "turmas";
+        }
+        return "redirect:/login";
     }
 
     @GetMapping("/adicionar-alunos")
     public String addAlunos() {
-        return "adicionar-aluno";
+        if (UserLog.getAcesso()){
+            return "adicionar-aluno";
+        }
+        return "redirect:/login";
     }
 
     @GetMapping("/adicionar-funcionarios")
     public String addFuncionarios() {
-        return "adicionar-funcionario";
+        if(UserLog.getAcesso()){
+            return "adicionar-funcionario";
+        }
+        return "redirect:/login";
     }
 
     @GetMapping("/adicionar-turmas")
     public String addTurmas() {
-        return "adicionar-turma";
+        if (UserLog.getAcesso()){
+            return "adicionar-turma";
+        }
+        return "redirect:/login";
     }
 }
