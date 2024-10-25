@@ -4,10 +4,16 @@
  */
 package com.senac.novo_horizonte.controller;
 
+import com.senac.novo_horizonte.entity.UsuarioDTO;
 import com.senac.novo_horizonte.entity.UsuarioEntity;
+import com.senac.novo_horizonte.service.Criptografia;
+import com.senac.novo_horizonte.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  *
@@ -16,6 +22,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MiscController {
 
+    @Autowired
+    UsuarioService usuarioService;
+
+    @PostMapping("/logar")
+    public String logar(@ModelAttribute("usuario") UsuarioDTO usuario, Model model) {
+
+        if (usuarioService.autenticar(usuario.getUsuario(), usuario.getSenha())){
+            return "redirect:/principal";
+        }
+
+        model.addAttribute("error", "Usuário ou Senha inválidos");
+        return "login";
+    }
+
     @GetMapping("/principal")
     public String getPrincipal() {
         return "principal";
@@ -23,8 +43,7 @@ public class MiscController {
 
     @GetMapping("/login")
     public String getLogin(Model model) {
-        UsuarioEntity usuario = new UsuarioEntity();
-        model.addAttribute("usuario", usuario);
+        model.addAttribute("usuario", new UsuarioDTO());
         return "login";
     }
 
@@ -34,7 +53,7 @@ public class MiscController {
     }
 
     @GetMapping("/funcionarios")
-    public String getFunciorios() {
+    public String getFuncionarios() {
         return "funcionarios";
     }
 

@@ -17,5 +17,13 @@ public class UsuarioService {
        return usuarioRepository.findAll();
     }
 
-
+    public boolean autenticar(String usuario, String senha){
+        List<UsuarioEntity> usuarios = getTodosUsuarios();
+        for (UsuarioEntity u : usuarios){
+            if (u.getUsuario().equals(usuario) && u.getSenha().equals(Criptografia.getMD5(senha))){
+                return UserLog.acesso(true);
+            }
+        }
+        return false;
+    }
 }
