@@ -4,6 +4,7 @@
  */
 package com.senac.novo_horizonte.controller;
 
+import com.senac.novo_horizonte.entity.UsuarioEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,8 @@ public class MiscController {
 
     @GetMapping("/login")
     public String getLogin(Model model) {
+        UsuarioEntity usuario = new UsuarioEntity();
+        model.addAttribute("usuario", usuario);
         return "login";
     }
 
