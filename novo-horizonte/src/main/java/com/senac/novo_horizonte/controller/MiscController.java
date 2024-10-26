@@ -4,14 +4,8 @@
  */
 package com.senac.novo_horizonte.controller;
 
-import com.senac.novo_horizonte.entity.FuncionarioEntity;
-import com.senac.novo_horizonte.entity.TurmaEntity;
-import com.senac.novo_horizonte.entity.UsuarioDTO;
-import com.senac.novo_horizonte.entity.UsuarioEntity;
-import com.senac.novo_horizonte.service.Criptografia;
-import com.senac.novo_horizonte.service.TurmaService;
-import com.senac.novo_horizonte.service.UserLog;
-import com.senac.novo_horizonte.service.UsuarioService;
+import com.senac.novo_horizonte.entity.*;
+import com.senac.novo_horizonte.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +25,8 @@ public class MiscController {
     UsuarioService usuarioService;
     @Autowired
     TurmaService turmaService;
+    @Autowired
+    AlunoService alunoService;
 
     @PostMapping("/logar")
     public String logar(@ModelAttribute("usuario") UsuarioDTO usuario, Model model) {
@@ -58,8 +54,9 @@ public class MiscController {
     }
 
     @GetMapping("/alunos")
-    public String getAlunos() {
+    public String getAlunos(Model model) {
         if (UserLog.getAcesso()){
+            model.addAttribute("alunos", alunoService.getTodosAlunos());
             return "alunos";
         }
         return "redirect:/login";
@@ -82,8 +79,9 @@ public class MiscController {
     }
 
     @GetMapping("/adicionar-alunos")
-    public String addAlunos() {
+    public String addAlunos(Model model) {
         if (UserLog.getAcesso()){
+            model.addAttribute("aluno", new AlunoEntity());
             return "adicionar-aluno";
         }
         return "redirect:/login";

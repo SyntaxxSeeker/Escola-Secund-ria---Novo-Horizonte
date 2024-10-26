@@ -5,69 +5,62 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Alunos</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <!-- CDN Bootstrap .css -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
-        <link rel="stylesheet" th:href="@{/css/style.css}"/>
-    </head>
-    <body>
-        <header th:insert="navbar.html"></header>
+<head>
+    <title>Alunos</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- CDN Bootstrap .css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<header th:insert="navbar.html"></header>
 
-        <main>
-            <div class="container">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">CPF</th>
-                            <th scope="col">Nascimento</th>
-                            <th scope="col">Matrícula</th>
-                            <th scope="col">Telefone</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>João Lucas</td>
-                            <td>357.890.124-50</td>
-                            <td>24/12/2006</td>
-                            <td>83453</td>
-                            <td>+55 31 9895-3718</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Agatha Vieira</td>
-                            <td>204.763.185-80</td>
-                            <td>19/04/2008</td>
-                            <td>82538</td>
-                            <td>+55 81 8511-9803</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Heloísa Pereira</td>
-                            <td>624.380.957-92</td>
-                            <td>02/02/2007</td>
-                            <td>51207</td>
-                            <td>(071) 1233-1228</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Júlia Aragão</td>
-                            <td>940.568.317-93</td>
-                            <td>25/03/2010</td>
-                            <td>23692</td>
-                            <td>+55 (051) 3246 7683</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </main>
+<main>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Nascimento</th>
+                <th scope="col">Matrícula</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">	Operações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="a : ${alunos}">
 
-        <!-- CDN Bootstrap .js -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    </body>
+                <td th:text="${a.id}"></td>
+
+                <td th:text="${a.nome}"></td>
+
+                <td th:text="${a.cpf}"></td>
+
+                <td th:text="${a.dataNascimento}"></td>
+
+                <td th:text="${a.matricula}"></td>
+
+                <td th:text="${a.telefone}"></td>
+
+                <td>
+                    <a th:href="@{/atualizar/{id}(id=${a.id})}" class="btn btn-primary">Atualizar</a>
+
+                    <a th:href="@{/deletar/{id}(id=${a.id})}" class="btn btn-danger">Excluir</a>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<!-- CDN Bootstrap .js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
 </html>
