@@ -4,9 +4,11 @@
  */
 package com.senac.novo_horizonte.controller;
 
+import com.senac.novo_horizonte.entity.TurmaEntity;
 import com.senac.novo_horizonte.entity.UsuarioDTO;
 import com.senac.novo_horizonte.entity.UsuarioEntity;
 import com.senac.novo_horizonte.service.Criptografia;
+import com.senac.novo_horizonte.service.TurmaService;
 import com.senac.novo_horizonte.service.UserLog;
 import com.senac.novo_horizonte.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 /**
@@ -25,14 +28,15 @@ public class MiscController {
 
     @Autowired
     UsuarioService usuarioService;
+    @Autowired
+    TurmaService turmaService;
 
     @PostMapping("/logar")
     public String logar(@ModelAttribute("usuario") UsuarioDTO usuario, Model model) {
-
+        System.out.println("Logando...");
         if (usuarioService.autenticar(usuario.getUsuario(), usuario.getSenha())){
             return "redirect:/principal";
         }
-
         model.addAttribute("error", "Usuário ou Senha inválidos");
         return "login";
     }
@@ -93,8 +97,9 @@ public class MiscController {
     }
 
     @GetMapping("/adicionar-turmas")
-    public String addTurmas() {
+    public String addTurmas(Model model) {
         if (UserLog.getAcesso()){
+            model.addAttribute("turma", new TurmaEntity());
             return "adicionar-turma";
         }
         return "redirect:/login";

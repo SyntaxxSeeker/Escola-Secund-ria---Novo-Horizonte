@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface turmaRepository extends JpaRepository<TurmaEntity, Long> {
+public interface TurmaRepository extends JpaRepository<TurmaEntity, Long> {
 }
