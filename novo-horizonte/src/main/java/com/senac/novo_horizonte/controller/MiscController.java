@@ -4,6 +4,7 @@
  */
 package com.senac.novo_horizonte.controller;
 
+import com.senac.novo_horizonte.entity.FuncionarioEntity;
 import com.senac.novo_horizonte.entity.TurmaEntity;
 import com.senac.novo_horizonte.entity.UsuarioDTO;
 import com.senac.novo_horizonte.entity.UsuarioEntity;
@@ -89,8 +90,9 @@ public class MiscController {
     }
 
     @GetMapping("/adicionar-funcionarios")
-    public String addFuncionarios() {
+    public String addFuncionarios(Model model) {
         if(UserLog.getAcesso()){
+            model.addAttribute("funcionario", new FuncionarioEntity());
             return "adicionar-funcionario";
         }
         return "redirect:/login";
