@@ -26,13 +26,13 @@ public class AlunoController {
         return "redirect:/alunos";
     }
 
-    @GetMapping("/deletar/{id}")
+    @GetMapping("/deletar-aluno/{id}")
     public String deletarAluno(@PathVariable Long id){
         alunoService.deletarAluno(id);
         return "redirect:/alunos";
     }
 
-    @GetMapping("/atualizar/{id}")
+    @GetMapping("/atualizar-aluno/{id}")
     public String atualizarAluno(@PathVariable Long id, Model model){
         AlunoEntity aluno = alunoService.getAlunoId(id);
         model.addAttribute("aluno", aluno);

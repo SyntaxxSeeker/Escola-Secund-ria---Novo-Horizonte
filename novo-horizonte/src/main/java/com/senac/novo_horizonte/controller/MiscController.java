@@ -27,6 +27,8 @@ public class MiscController {
     TurmaService turmaService;
     @Autowired
     AlunoService alunoService;
+    @Autowired
+    FuncionarioService funcionarioService;
 
     @PostMapping("/logar")
     public String logar(@ModelAttribute("usuario") UsuarioDTO usuario, Model model) {
@@ -63,8 +65,9 @@ public class MiscController {
     }
 
     @GetMapping("/funcionarios")
-    public String getFuncionarios() {
+    public String getFuncionarios(Model model) {
         if(UserLog.getAcesso()){
+            model.addAttribute("funcionarios", funcionarioService.getTodosFuncionarios());
             return "funcionarios";
         }
         return "redirect:/login";
