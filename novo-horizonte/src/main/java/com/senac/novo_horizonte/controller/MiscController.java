@@ -74,8 +74,9 @@ public class MiscController {
     }
 
     @GetMapping("/turmas")
-    public String getTurma() {
+    public String getTurma(Model model) {
         if (UserLog.getAcesso()){
+            model.addAttribute("turmas", turmaService.getTodasAsTurmas());
             return "turmas";
         }
         return "redirect:/login";

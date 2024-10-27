@@ -23,7 +23,6 @@ public class FuncionarioController {
         }else{
             funcionarioService.atualizarFuncionario(funcionario.getId(), funcionario);
         }
-
         return "redirect:/funcionarios";
     }
 

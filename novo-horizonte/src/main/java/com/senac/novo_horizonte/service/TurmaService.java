@@ -37,4 +37,9 @@ public class TurmaService {
         return turmaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Não foi possível encontar turma com ID ("+id+")"));
     }
+
+    public void deletarTurma(Long id){
+        TurmaEntity turma = getTurmaId(id);
+        turmaRepository.deleteById(turma.getId());
+    }
 }
