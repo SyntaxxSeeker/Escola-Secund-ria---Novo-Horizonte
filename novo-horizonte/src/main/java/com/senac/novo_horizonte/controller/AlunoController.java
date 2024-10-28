@@ -19,7 +19,12 @@ public class AlunoController {
     public String adicionarAluno(@Valid @ModelAttribute("aluno")AlunoEntity aluno, BindingResult result){
 
         if (result.hasErrors()){
-            return "adicionar-aluno";
+            if(aluno.getId() == null){
+                return "adicionar-aluno";
+            }else{
+                return "atualizar-aluno";
+            }
+
         }
 
         if(aluno.getId() == null){

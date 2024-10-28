@@ -2,9 +2,11 @@ package com.senac.novo_horizonte.controller;
 
 import com.senac.novo_horizonte.entity.FuncionarioEntity;
 import com.senac.novo_horizonte.service.FuncionarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +19,15 @@ public class FuncionarioController {
     FuncionarioService funcionarioService;
 
     @PostMapping("/save-funcionario")
-    public String adicionarFuncionario(@ModelAttribute("funcionario") FuncionarioEntity funcionario){
+    public String adicionarFuncionario(@Valid @ModelAttribute("funcionario") FuncionarioEntity funcionario, BindingResult result){
+        if (result.hasErrors()){
+            if (funcionario.getId() == null){
+                return "adicionar-funcionario";
+            }else{
+                return "atualizar-funcionario";
+            }
+        }
+
         if(funcionario.getId() == null){
             funcionarioService.adicionarFuncionario(funcionario);
         }else{

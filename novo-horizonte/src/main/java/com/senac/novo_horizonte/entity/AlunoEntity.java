@@ -23,6 +23,7 @@ public class AlunoEntity {
     @Column(name = "data_nascimento")
     @NotBlank(message = "Data de Nascimento não pode ser nulo")
     private String dataNascimento;
+    @NotNull(message = "Campo 'Matrícula' não pode ser nulo")
     @Min(value = 1, message = "Matrícula deve ser um número positivo")
     private int matricula;
     @NotBlank(message = "Telefone não pode ser nulo")

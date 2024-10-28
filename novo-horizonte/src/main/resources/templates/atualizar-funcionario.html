@@ -23,26 +23,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <div class="form-row">
                     <input type="hidden" th:field="*{id}" />
                     <!-- Campo Nome -->
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12 mt-3">
                         <div class="row align-items-center">
                             <div class="col-md-6">
                                 <label for="inputNome">Nome: </label>
                             </div>
                             <div class="col-md-6 text-end">
-                                <div class="text-danger" id="erro-nome"></div> <!-- Erro Nome -->
+                                <span class="form-text text-danger ms-2" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span> <!-- Erro Nome -->
                             </div>
                         </div>
                         <input type="text" th:field="*{nome}" class="form-control mt-2" id="inputNome" placeholder="Nome"/>
                     </div>
 
                     <!-- Campo CPF -->
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12 mt-3">
                         <div class="row align-items-center">
                             <div class="col-md-6">
                                 <label for="inputCpf">Cpf: </label>
                             </div>
                             <div class="col-md-6 text-end">
-                                <div class="text-danger" id="erro-cpf"></div> <!-- Erro CPF -->
+                                <span class="form-text text-danger ms-2" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span> <!-- Erro CPF -->
                             </div>
                         </div>
                         <input type="text" th:field="*{cpf}" class="form-control mt-2" id="inputCpf" placeholder="Cpf"/>
@@ -50,52 +50,52 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
 
                 <!-- Campo Cargo -->
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-12 mt-3">
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <label for="inputCargo">Cargo: </label>
                         </div>
                         <div class="col-md-6 text-end">
-                            <div class="text-danger" id="erro-cargo"></div> <!-- Erro Cargo -->
+                            <span class="form-text text-danger ms-2" th:if="${#fields.hasErrors('cargo')}" th:errors="*{cargo}"></span> <!-- Erro Cargo -->
                         </div>
                     </div>
                     <input type="text" th:field="*{cargo}" class="form-control mt-2" id="inputCargo" placeholder="Cargo"/>
                 </div>
 
                 <!-- Campo E-mail -->
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-12 mt-3">
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <label for="inputEmail">E-mail: </label>
                         </div>
                         <div class="col-md-6 text-end">
-                            <div class="text-danger" id="erro-email"></div> <!-- Erro E-mail -->
+                            <span class="form-text text-danger ms-2" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span> <!-- Erro E-mail -->
                         </div>
                     </div>
                     <input type="email" th:field="*{email}" class="form-control mt-2" id="inputEmail" placeholder="E-Mail"/>
                 </div>
 
                 <!-- Campo Telefone -->
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-12 mt-3">
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <label for="inputTelefone">Telefone: </label>
                         </div>
                         <div class="col-md-6 text-end">
-                            <div class="text-danger" id="erro-telefone"></div> <!-- Erro Telefone -->
+                            <span class="form-text text-danger ms-2" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></span> <!-- Erro Telefone -->
                         </div>
                     </div>
                     <input type="text" th:field="*{telefone}" class="form-control mt-2" id="inputTelefone" placeholder="Telefone"/>
                 </div>
 
                 <!-- Campo Data da contratação -->
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-12 mt-3">
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <label for="inputDataContratacao">Data da contratação: </label>
                         </div>
                         <div class="col-md-6 text-end">
-                            <div class="text-danger" id="erro-data-contratacao"></div> <!-- Erro Data da contratação -->
+                            <span class="form-text text-danger ms-2" th:if="${#fields.hasErrors('dataContratacao')}" th:errors="*{dataContratacao}"></span><!-- Erro Data da contratação -->
                         </div>
                     </div>
                     <input type="date" th:field="*{dataContratacao}" class="form-control mt-2" id="inputDataContratacao" placeholder="Data da contratação"/>
