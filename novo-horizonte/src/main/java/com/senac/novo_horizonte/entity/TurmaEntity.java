@@ -1,6 +1,8 @@
 package com.senac.novo_horizonte.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -11,14 +13,14 @@ public class TurmaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull(message = "Campo 'N° Turma' não pode ser nulo")
+    @Min(value = 1, message = "O campo deve ser um número positivo")
     @Column(name = "numero_turma")
     private int numeroTurma;
-    @NotNull(message = "Campo 'Professor' não pode ser nulo")
+    @NotBlank(message = "Campo 'Professor' não pode ser nulo")
     private String professor;
-    @NotNull(message = "Campo 'Turno' não pode ser nulo")
+    @NotBlank(message = "Campo 'Turno' não pode ser nulo")
     private String turno;
-    @NotNull(message = "Campo 'N° Alunos' não pode ser nulo")
+    @Min(value = 15, message = "Somente números positivos acima de '14'")
     @Column(name = "numero_alunos")
     private int numeroAlunos;
 }

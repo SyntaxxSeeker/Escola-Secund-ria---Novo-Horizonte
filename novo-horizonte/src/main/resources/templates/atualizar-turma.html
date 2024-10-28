@@ -24,13 +24,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div class="form-row">
           <input type="hidden" th:field="*{id}" />
           <!-- Campo Número da Turma -->
-          <div class="form-group col-md-12">
+          <div class="form-group col-md-12 mt-3">
             <div class="row align-items-center">
               <div class="col-md-6">
                 <label for="inputNumeroTurma">N° da Turma: </label>
               </div>
               <div class="col-md-6 text-end">
-                <div class="text-danger" id="erro-numero-turma"></div> <!-- Erro Número da Turma -->
+                <span class="form-text text-danger ms-2" th:if="${#fields.hasErrors('numeroTurma')}" th:errors="*{numeroTurma}"></span> <!-- Erro Número da Turma -->
               </div>
             </div>
             <input th:field="*{numeroTurma}" type="text" class="form-control mt-2"
@@ -38,13 +38,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
           </div>
 
           <!-- Campo Professor -->
-          <div class="form-group col-md-12">
+          <div class="form-group col-md-12 mt-3">
             <div class="row align-items-center">
               <div class="col-md-6">
                 <label for="inputProfessor">Professor: </label>
               </div>
               <div class="col-md-6 text-end">
-                <div class="text-danger" id="erro-professor"></div> <!-- Erro Professor -->
+                <span class="form-text text-danger ms-2" th:if="${#fields.hasErrors('professor')}" th:errors="*{professor}"></span> <!-- Erro Professor -->
               </div>
             </div>
             <input th:field="*{professor}" type="text" class="form-control mt-2"
@@ -53,13 +53,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </div>
 
         <!-- Campo Turno -->
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-12 mt-3">
           <div class="row align-items-center">
             <div class="col-md-6">
               <label for="inputTurno">Turno: </label>
             </div>
             <div class="col-md-6 text-end">
-              <div class="text-danger" id="erro-turno"></div> <!-- Erro Turno -->
+              <span class="form-text text-danger ms-2" th:if="${#fields.hasErrors('turno')}" th:errors="*{turno}"></span> <!-- Erro Turno -->
             </div>
           </div>
           <input th:field="*{turno}" type="text" class="form-control mt-2" id="inputTurno"
@@ -67,13 +67,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </div>
 
         <!-- Campo Número de Alunos -->
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-12 mt-3">
           <div class="row align-items-center">
             <div class="col-md-6">
               <label for="inputNumeroAlunos">N° de Alunos: </label>
             </div>
             <div class="col-md-6 text-end">
-              <div class="text-danger" id="erro-numero-alunos"></div> <!-- Erro Número de Alunos -->
+              <span class="form-text text-danger ms-2" th:if="${#fields.hasErrors('numeroAlunos')}" th:errors="*{numeroAlunos}"></span><!-- Erro Número de Alunos -->
             </div>
           </div>
           <input th:field="*{numeroAlunos}" type="number" class="form-control mt-2"
@@ -81,7 +81,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </div>
 
         <!-- Botão de Adicionar -->
-        <button type="submit" class="btn btn-primary w-100 mt-3">Atualizar Turma</button>
+        <button type="submit" class="btn btn-primary w-100 mt-3">Atualizar turma</button>
       </form>
     </div>
   </div>

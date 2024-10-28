@@ -2,9 +2,11 @@ package com.senac.novo_horizonte.controller;
 
 import com.senac.novo_horizonte.entity.TurmaEntity;
 import com.senac.novo_horizonte.service.TurmaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +19,16 @@ public class TurmaController {
     TurmaService turmaService;
 
     @PostMapping("/turma-save")
-    public String saveTurma(@ModelAttribute("turma") TurmaEntity turma) {
+    public String saveTurma(@Valid  @ModelAttribute("turma") TurmaEntity turma, BindingResult result) {
+
+        if(result.hasErrors()){
+            if (turma.getId() == null){
+                return "adicionar-turma";
+            }else{
+                return "atualizar-turma";
+            }
+        }
+
         if(turma.getId() == null){
             turmaService.adicionarTurma(turma);
         }else{
