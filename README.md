@@ -9,6 +9,9 @@
 - JavaScript (frontend);
 - CSS (estilização);
 - Banco de Dados MySQL (armazenamento de dados).
+- Spring
+- Thymeleaf
+- Bootstrap
 
 **Equipe de desenvolvimento:** Alice, Josué Vítor e Vinicius.
 
