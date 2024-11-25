@@ -13,7 +13,7 @@
 - Thymeleaf
 - Bootstrap
 
-**Equipe de desenvolvimento:** Alice, Josué Vítor e Vinicius.
+**Equipe de desenvolvimento:** Josué Vítor, Alice e Angelus.
 
 **Objetivos do software:** O sistema será utilizado pela secretária e pela diretora da escola, com o intuito de:
 - Armazenar e gerenciar informações dos usuários, permitindo a atualização de dados como cadastro de alunos e turmas;
